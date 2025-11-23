@@ -1,0 +1,45 @@
+{
+  "name": "notedis/craft-notedis",
+  "description": "Embed a Notedis.com feedback widget on your Craft CMS site.",
+  "type": "craft-plugin",
+  "version": "1.0.0",
+  "keywords": [
+    "craft",
+    "cms",
+    "craftcms",
+    "craft-plugin",
+    "notedis",
+    "feedback",
+    "widget",
+    "bug tracking"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Notedis",
+      "homepage": "https://notedis.com"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/darinlarimore/notedis-craft/issues",
+    "source": "https://github.com/darinlarimore/notedis-craft"
+  },
+  "require": {
+    "php": ">=8.0.2",
+    "craftcms/cms": "^4.0.0|^5.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "notedis\\craftnotedis\\": "src/"
+    }
+  },
+  "extra": {
+    "name": "Notedis Widget",
+    "handle": "notedis",
+    "developer": "Notedis",
+    "developerUrl": "https://notedis.com",
+    "documentationUrl": "https://github.com/darinlarimore/notedis-craft/blob/main/README.md",
+    "changelogUrl": "https://github.com/darinlarimore/notedis-craft/blob/main/CHANGELOG.md",
+    "class": "notedis\\craftnotedis\\Plugin"
+  }
+}

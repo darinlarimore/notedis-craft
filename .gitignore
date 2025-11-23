@@ -1,0 +1,25 @@
+# Composer
+vendor/
+composer.lock
+
+# IDE
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Craft
+.env
+.env.*
+!.env.example
+storage/
+config/license.key
+
+# Build
+node_modules/
+npm-debug.log
+dist/

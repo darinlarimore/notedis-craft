@@ -1,0 +1,110 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{# @var settings notedis\craftnotedis\models\Settings #}
+
+{% import "_includes/forms" as forms %}
+
+<div class="readable">
+    <p>{{ 'Configure the Notedis feedback widget. The feedback button will automatically appear on all pages of your site.'|t('notedis') }}</p>
+</div>
+
+<hr>
+
+<h2>{{ 'Widget Configuration'|t('notedis') }}</h2>
+<p class="light">{{ 'Get your site key from your'|t('notedis') }} <a href="https://notedis.com" target="_blank" rel="noopener noreferrer">Notedis.com</a> {{ 'account'|t('notedis') }}.</p>
+
+{{ forms.autosuggestField({
+    label: 'Site Key (Required)'|t('notedis'),
+    instructions: 'Get your site key from your Notedis.com account. This is required for the widget to work.'|t('notedis'),
+    id: 'siteKey',
+    name: 'siteKey',
+    value: settings.siteKey,
+    required: true,
+    errors: settings.getErrors('siteKey'),
+    suggestions: [],
+}) }}
+
+{{ forms.textField({
+    label: 'API Endpoint'|t('notedis'),
+    instructions: 'API endpoint URL. Leave default unless instructed otherwise.'|t('notedis'),
+    id: 'apiEndpoint',
+    name: 'apiEndpoint',
+    value: settings.apiEndpoint,
+    placeholder: 'https://notedis.com',
+    errors: settings.getErrors('apiEndpoint'),
+}) }}
+
+{{ forms.selectField({
+    label: 'Button Position'|t('notedis'),
+    instructions: 'Position of the feedback button on your site.'|t('notedis'),
+    id: 'widgetPosition',
+    name: 'widgetPosition',
+    value: settings.widgetPosition,
+    options: {
+        'bottom-right': 'Bottom Right'|t('notedis'),
+        'bottom-left': 'Bottom Left'|t('notedis'),
+        'top-right': 'Top Right'|t('notedis'),
+        'top-left': 'Top Left'|t('notedis'),
+    },
+    errors: settings.getErrors('widgetPosition'),
+}) }}
+
+{{ forms.colorField({
+    label: 'Button Color'|t('notedis'),
+    instructions: 'Hex color code for the feedback button (e.g., #3B82F6).'|t('notedis'),
+    id: 'widgetColor',
+    name: 'widgetColor',
+    value: settings.widgetColor,
+    errors: settings.getErrors('widgetColor'),
+}) }}
+
+{{ forms.lightswitchField({
+    label: 'Logged-in Users Only'|t('notedis'),
+    instructions: 'When enabled, the feedback button will only appear for users who are logged into Craft CMS.'|t('notedis'),
+    id: 'loggedInOnly',
+    name: 'loggedInOnly',
+    on: settings.loggedInOnly,
+    errors: settings.getErrors('loggedInOnly'),
+}) }}
+
+{{ forms.lightswitchField({
+    label: 'Show in Control Panel'|t('notedis'),
+    instructions: 'When enabled, the feedback button will appear in the Craft CMS control panel.'|t('notedis'),
+    id: 'showInAdmin',
+    name: 'showInAdmin',
+    on: settings.showInAdmin,
+    errors: settings.getErrors('showInAdmin'),
+}) }}
+
+{{ forms.selectField({
+    label: 'Widget Source'|t('notedis'),
+    instructions: '<strong>Local:</strong> Loads widget.js from your server. <strong>CDN:</strong> Loads from Notedis.com, gets automatic updates but requires external connection.'|t('notedis'),
+    id: 'widgetSource',
+    name: 'widgetSource',
+    value: settings.widgetSource,
+    options: {
+        'local': 'Local (Bundled with Plugin - Recommended)'|t('notedis'),
+        'cdn': 'CDN (Notedis.com - Always Latest)'|t('notedis'),
+    },
+    errors: settings.getErrors('widgetSource'),
+}) }}
+
+<hr>
+
+<h2>{{ 'How It Works'|t('notedis') }}</h2>
+<p>{{ 'Once configured with your Site Key, a feedback button will automatically appear on all pages of your website.'|t('notedis') }}</p>
+
+<h3>{{ 'For Your Visitors'|t('notedis') }}</h3>
+<ul>
+    <li>{{ 'Click the feedback button to open the feedback form'|t('notedis') }}</li>
+    <li>{{ 'Choose feedback category (Bug, Feature, Improvement, Question)'|t('notedis') }}</li>
+    <li>{{ 'Take screenshots with annotations'|t('notedis') }}</li>
+    <li>{{ 'Submit feedback directly to your Notedis account'|t('notedis') }}</li>
+</ul>
+
+<h3>{{ 'Configuration Options'|t('notedis') }}</h3>
+<ul>
+    <li><strong>{{ 'Site Key:'|t('notedis') }}</strong> {{ 'Required - Get this from your Notedis.com account'|t('notedis') }}</li>
+    <li><strong>{{ 'API Endpoint:'|t('notedis') }}</strong> {{ 'Leave as default unless instructed otherwise'|t('notedis') }}</li>
+    <li><strong>{{ 'Button Position:'|t('notedis') }}</strong> {{ 'Where the feedback button appears on your site'|t('notedis') }}</li>
+    <li><strong>{{ 'Button Color:'|t('notedis') }}</strong> {{ 'Customize to match your brand'|t('notedis') }}</li>
+</ul>
